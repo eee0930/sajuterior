@@ -18,21 +18,26 @@ export default function App() {
   const [currentCouple, setCurrentCouple] = useState<CoupleProfile | null>(null);
   const [profilesRefreshKey, setProfilesRefreshKey] = useState(0);
 
+  function scrollTop() { window.scrollTo({ top: 0, behavior: 'instant' }); }
+
   function handleTabChange(tab: 'form' | 'profiles') {
     setActiveTab(tab);
     setView(tab);
     if (tab === 'profiles') setProfilesRefreshKey(k => k + 1);
+    scrollTop();
   }
 
   function handleBack() {
     setView(activeTab);
     if (activeTab === 'profiles') setProfilesRefreshKey(k => k + 1);
+    scrollTop();
   }
 
   function handleDelete() {
     setProfilesRefreshKey(k => k + 1);
     setView('profiles');
     setActiveTab('profiles');
+    scrollTop();
   }
 
   return (
@@ -60,9 +65,9 @@ export default function App() {
             </div>
 
             {formMode === 'individual' ? (
-              <InputForm onResult={profile => { setCurrentProfile(profile); setView('result'); }} />
+              <InputForm onResult={profile => { setCurrentProfile(profile); setView('result'); scrollTop(); }} />
             ) : (
-              <CoupleInputForm onResult={couple => { setCurrentCouple(couple); setView('couple-result'); }} />
+              <CoupleInputForm onResult={couple => { setCurrentCouple(couple); setView('couple-result'); scrollTop(); }} />
             )}
           </>
         )}
@@ -77,8 +82,8 @@ export default function App() {
 
         {view === 'profiles' && (
           <ProfileList
-            onSelectIndividual={profile => { setCurrentProfile(profile); setView('result'); }}
-            onSelectCouple={couple => { setCurrentCouple(couple); setView('couple-result'); }}
+            onSelectIndividual={profile => { setCurrentProfile(profile); setView('result'); scrollTop(); }}
+            onSelectCouple={couple => { setCurrentCouple(couple); setView('couple-result'); scrollTop(); }}
             onNew={() => { setActiveTab('form'); setView('form'); }}
             refreshKey={profilesRefreshKey}
           />
