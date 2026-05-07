@@ -9,7 +9,7 @@ Analyze your *Saju* (사주팔자) and Five Elements (오행) balance, then get 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-eee0930.github.io-7C3AED?style=for-the-badge&logo=github)](https://eee0930.github.io/sajuterior/)
 [![License](https://img.shields.io/badge/license-MIT-pink?style=for-the-badge)](LICENSE)
 
-![Sajuterior Preview](https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&h=400&fit=crop&q=80)
+![Sajuterior Preview](https://images.unsplash.com/photo-1675528428686-1379942a4e6b?w=1200&h=400&fit=crop&q=80)
 
 </div>
 
