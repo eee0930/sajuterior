@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, User, Calendar, Clock, Venus, Mars } from 'lucide-react';
+import { Sparkles, User, Calendar, Clock, Venus, Mars, ChevronDown } from 'lucide-react';
 import type { Gender, UserProfile } from '../types';
 import { calculateSaju, HOUR_OPTIONS } from '../utils/saju';
 import { saveProfile } from '../utils/storage';
@@ -143,17 +143,20 @@ export default function InputForm({ onResult }: InputFormProps) {
           <label className="flex items-center gap-1.5 text-xs font-bold text-gray-600 uppercase tracking-wide mb-2">
             <Clock size={13} /> 태어난 시간
           </label>
-          <select
-            value={hourValue}
-            onChange={e => setHourValue(e.target.value)}
-            className={`${inputBase} ${normalInput} cursor-pointer`}
-          >
-            {HOUR_OPTIONS.map(opt => (
-              <option key={String(opt.value)} value={String(opt.value)}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={hourValue}
+              onChange={e => setHourValue(e.target.value)}
+              className={`${inputBase} ${normalInput} cursor-pointer appearance-none pr-10`}
+            >
+              {HOUR_OPTIONS.map(opt => (
+                <option key={String(opt.value)} value={String(opt.value)}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+          </div>
         </div>
 
         {/* Gender */}

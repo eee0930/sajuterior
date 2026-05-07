@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Venus, Mars, Heart, Calendar, Clock, User } from 'lucide-react';
+import { Venus, Mars, Heart, Calendar, Clock, User, ChevronDown } from 'lucide-react';
 import type { Gender, UserProfile, CoupleProfile } from '../types';
 import { calculateSaju, HOUR_OPTIONS } from '../utils/saju';
 import { analyzeCoupleElements } from '../utils/coupleAnalysis';
@@ -121,12 +121,15 @@ function PartnerFormSection({
         <label className="flex items-center gap-1 text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">
           <Clock size={11} /> 태어난 시간
         </label>
-        <select value={fields.hourValue} onChange={e => onChange({ ...fields, hourValue: e.target.value })}
-          className={`${inputBase} border-gray-200 cursor-pointer`}>
-          {HOUR_OPTIONS.map(opt => (
-            <option key={String(opt.value)} value={String(opt.value)}>{opt.label}</option>
-          ))}
-        </select>
+        <div className="relative">
+          <select value={fields.hourValue} onChange={e => onChange({ ...fields, hourValue: e.target.value })}
+            className={`${inputBase} border-gray-200 cursor-pointer appearance-none pr-10`}>
+            {HOUR_OPTIONS.map(opt => (
+              <option key={String(opt.value)} value={String(opt.value)}>{opt.label}</option>
+            ))}
+          </select>
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+        </div>
       </div>
 
       {/* Gender */}
